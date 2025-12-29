@@ -1,0 +1,187 @@
+\documentclass[10pt]{beamer}
+
+% --- Configuración del Tema ---
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{} % Quita los iconos de navegación innecesarios
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% --- Colores Python ---
+% --- Configuración de Color Azul Marino ---
+\definecolor{navydark}{RGB}{0, 32, 90} % Un azul marino profundo y moderno
+\setbeamercolor{structure}{fg=navydark} % Cambia títulos, viñetas y barras
+\setbeamercolor{palette primary}{bg=navydark, fg=white}
+\setbeamercolor{palette secondary}{bg=navydark, fg=white}
+\setbeamercolor{palette tertiary}{bg=navydark, fg=white}
+
+% --- Configuración de Código Python ---
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    breaklines=true,
+    showstringspaces=false,
+    frame=single,
+    backgroundcolor=\color{gray!5}
+}
+
+% --- Portada ---
+\title[Python Basics]{Mastering Python: De Cero a Ingeniero}
+\subtitle{Fundamentos de Programación y Mejores Prácticas}
+\author{Jordan Breña / www.linkedin.com/in/jordanbrena
+}
+\institute{Jordan Academy}
+\date{\today}
+
+\begin{document}
+
+% Slide de Portada
+\begin{frame}
+    \centering
+    \vspace{0.5cm}
+    % Espacio para el logo de Python (Asegúrate de subir python_logo.png a Overleaf)
+    \includegraphics[height=2cm]{python.png} \par
+    \vspace{0.5cm}
+    \titlepage
+\end{frame}
+
+% --- Sección 1: Introducción ---
+\section{Introducción a Python}
+
+\begin{frame}{¿Qué es Python y por qué domina la industria?}
+    Python es un lenguaje de alto nivel, interpretado y multiparadigma. Su filosofía se centra en la legibilidad del código (Zen de Python).
+    
+    \vspace{0.3cm}
+    \textbf{Usos comunes en la industria:}
+    \begin{itemize}
+        \item \textbf{Data Science \& AI:} TensorFlow, Pandas, Scikit-learn.
+        \item \textbf{Web Development:} Django, FastAPI, Flask.
+        \item \textbf{Automatización/Scripting:} DevOps y tareas del sistema.
+        \item \textbf{Fintech:} Análisis cuantitativo y trading algorítmico.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Entorno Local: Instalación y Configuración}
+    Un ingeniero no solo escribe código, gestiona entornos.
+    \vspace{0.3cm}
+    \begin{enumerate}
+        \item \textbf{Instalación:} Descarga desde \texttt{python.org} (Versión 3.10+ recomendada).
+        \item \textbf{Gestión de Entornos:} Uso de \texttt{venv} o \texttt{conda}.
+        \begin{itemize}
+            \item \texttt{python -m venv env}
+        \end{itemize}
+        \item \textbf{IDE Recomendado:} VS Code (con extensión Pylance) o PyCharm.
+    \end{enumerate}
+    \vfill
+    \begin{quote}
+        "No contamines tu entorno global; usa siempre entornos virtuales."
+    \end{quote}
+\end{frame}
+
+% --- Sección 2: Variables ---
+\section{Variables y Tipos de Datos}
+
+\begin{frame}[fragile]{Declaración de Variables y PEP 8}
+    En Python, las variables son **referencias a objetos** y tienen tipado dinámico.
+    
+    \vspace{0.3cm}
+    \textbf{Naming Conventions (PEP 8):}
+    \begin{itemize}
+        \item Usar \texttt{snake\_case} para variables y funciones.
+        \item Nombres descriptivos (evitar \texttt{x}, \texttt{y}, \texttt{temp}).
+        \item Las constantes van en \texttt{UPPER\_CASE}.
+    \end{itemize}
+
+\begin{lstlisting}
+# Ejemplo correcto (Pythonic)
+user_age = 25 
+PI_CONSTANT = 3.1416
+is_active = True
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{La Función \texttt{print()} y f-strings}
+    Comunicar resultados es vital. Olvida la concatenación vieja; usa \textbf{f-strings} (Python 3.6+).
+    
+\begin{lstlisting}
+name = "Pythonista"
+version = 3.12
+
+# Forma moderna y eficiente
+print(f"Hola {name}, estas usando la version {version}")
+
+# El parametro 'end' evita el salto de linea
+print("Cargando...", end=" ")
+print("[OK]")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Tipos de Datos Comunes}
+    Python es "Strongly Typed" (Tipado fuerte). No puedes sumar un string con un entero.
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Tipo} & \textbf{Clase} & \textbf{Ejemplo} \\
+            \hline
+            Entero & \texttt{int} & \texttt{10, -5} \\
+            Flotante & \texttt{float} & \texttt{3.14, 2.0} \\
+            Cadena & \texttt{str} & \texttt{"Hola"} \\
+            Booleano & \texttt{bool} & \texttt{True, False} \\
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \textbf{¿Cómo saber el tipo?} Usamos la función \texttt{type()}.
+\begin{lstlisting}
+x = 10.5
+print(type(x))  # <class 'float'>
+\end{lstlisting}
+\end{frame}
+
+% --- Frame de Referencias Bibliográficas ---
+\begin{frame}[allowframebreaks]{Referencias Bibliográficas}
+    \begin{thebibliography}{10}
+        
+        % Libros de referencia clásicos y modernos
+        \beamertemplatebookbibitems
+        \bibitem{Schurmann2025}
+        Nicolas Schurmann.
+        \newblock {\em Ultimate Python: de cero a experto}.
+        \newblock 2025.
+
+        \bibitem{Ramalho2022}
+        Luciano Ramalho.
+        \newblock {\em Fluent Python: Clear, Concise, and Effective Programming}.
+        \newblock O'Reilly Media, 2da Edición, 2022.
+
+        \bibitem{Matthes2023}
+        Eric Matthes.
+        \newblock {\em Python Crash Course, 3ra Edición}.
+        \newblock No Starch Press, 2023.
+
+        % Documentación oficial y recursos en línea
+        \beamertemplateonlinebibitems
+        \bibitem{PythonDocs}
+        Python Software Foundation.
+        \newblock {\em Python 3.13 Documentation}.
+        \newblock \url{https://docs.python.org/3/}, 2025.
+
+        \bibitem{FastAPI}
+        Sebastián Ramírez.
+        \newblock {\em FastAPI Framework Documentation}.
+        \newblock \url{https://fastapi.tiangolo.com/}, 2025.
+
+    \end{thebibliography}
+\end{frame}
+
+\end{document}
